@@ -66,7 +66,7 @@ class Program
         {
             string xpath=$"//NhanVien[number(Luong)>{luongTren.ToString(CultureInfo.InvariantCulture)}]";
             XmlNodeList nodes=doc.SelectNodes(xpath);
-             if(node == null || nodes.Count == 0
+             if(node == null || nodes.Count == 0)
              {
                 Console.WriteLine("No employees found with salary greater than {0}.", luongTren);
                 return;
@@ -97,7 +97,21 @@ class Program
         }
         static void HandleXPath(XmlDocument doc)
             {
+          if(nodes == null || nodes.Count == 0)
+            {
+                Console.WriteLine("No employees found in department: {0}", xpath);
+                return;
+            }
                 
+            }
+        static void handleQuyThuong()
+            {
+                 if(nodes == null || nodes.Count == 0)
+            {
+                Console.WriteLine("No employees found in department: {0}", quythuong);
+                return;
+            }
+            
             }
         
 }

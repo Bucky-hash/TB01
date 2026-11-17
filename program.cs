@@ -75,6 +75,31 @@ class Program
                 Console.WriteLine($"MaNV: {ma}, HoTen: {hoten}, Luong: {luong}");
             }
     }
-    static void Handle
+    static void HandlePhong(XmlDocument doc, string maPhong)
+        {
+            string xpath=$"//NhanVien[PhongBan='{maPhong}']";
+            XmlNodeList nodes=doc.SelectNodes(xpath);
+            if(nodes == null || nodes.Count == 0)
+            {
+                Console.WriteLine("No employees found in department: {0}", maPhong);
+                return;
+            }
+            foreach(XmlNode node in nodes)
+            {
+                string ma=node.SelectSingleNode("MaNV")?.InnerText;
+                string hoten=node.SelectSingleNode("HoTen")?.InnerText;
+                string luong=node.SelectSingleNode("Luong")?.InnerText;
+                Console.WriteLine($"MaNV: {ma}, HoTen: {hoten}, Luong: {luong}");
+            }
+        }
+        static void HandleDem(XmlDocument doc)
+        {
+            string xpath="//NhanVien";
+            XmlNodeList nodes=doc.SelectNodes(xpath);
+            int count=nodes?.Count ?? 0;
+            Console.WriteLine("Total number of employees: {0}", count);
+        }
+        static void HandleXPath(XmlDocument doc)
+        
 }
 }
